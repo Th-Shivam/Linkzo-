@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Primary Meta Tags -->
+    <title>Linkzo - Social Media Marketing Agency | Get Started Today</title>
+    <meta name="title" content="Linkzo - Social Media Marketing Agency | Get Started Today">
+    <meta name="description" content="Join Linkzo today! Companies get powerful social media marketing solutions. Creators get growth opportunities. Choose your path to digital success.">
+    <meta name="keywords" content="social media marketing, digital marketing agency, creator network, brand strategy, social media ads, content creation">
+    <meta name="author" content="Linkzo">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://linkzo.com/">
+    <meta property="og:title" content="Linkzo - Social Media Marketing Agency">
+    <meta property="og:description" content="Join Linkzo today! Companies get powerful marketing solutions. Creators get growth opportunities.">
+    <meta property="og:image" content="https://linkzo.com/images/linkzo-og-image.jpg">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://linkzo.com/">
+    <meta property="twitter:title" content="Linkzo - Social Media Marketing Agency">
+    <meta property="twitter:description" content="Join Linkzo today! Companies get powerful marketing solutions. Creators get growth opportunities.">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <meta name="theme-color" content="#00ff88">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Interactive Landing Screen -->
+    <div id="landing-screen" class="landing-screen">
+        <div class="landing-container">
+            <div class="landing-header">
+                <h1 class="landing-logo">Linkzo</h1>
+                <p class="landing-subtitle">Choose Your Path to Digital Success</p>
+            </div>
+            
+            <div class="choice-container">
+                <button class="choice-btn company-btn" id="company-choice" aria-label="I'm a Company/Brand">
+                    <div class="choice-icon">
+                        <i class="fas fa-building" aria-hidden="true"></i>
+                    </div>
+                    <h2>I'm a Company / Brand</h2>
+                    <p>Get powerful marketing solutions</p>
+                    <div class="choice-features">
+                        <span>• Social Media Ads</span>
+                        <span>• Content Creation</span>
+                        <span>• Brand Strategy</span>
+                    </div>
+                </button>
+                
+                <button class="choice-btn creator-btn" id="creator-choice" aria-label="I'm a Creator/Influencer">
+                    <div class="choice-icon">
+                        <i class="fas fa-star" aria-hidden="true"></i>
+                    </div>
+                    <h2>I'm a Creator / Influencer</h2>
+                    <p>Join our creator network</p>
+                    <div class="choice-features">
+                        <span>• Growth Opportunities</span>
+                        <span>• Brand Collaborations</span>
+                        <span>• Monetization Support</span>
+                    </div>
+                </button>
+            </div>
+            
+            <div class="landing-footer">
+                <p>Trusted by 500+ businesses & creators</p>
+            </div>
+        </div>
+        
+        <!-- Animated Background Elements -->
+        <div class="bg-animation">
+            <div class="floating-orb orb-1"></div>
+            <div class="floating-orb orb-2"></div>
+            <div class="floating-orb orb-3"></div>
+        </div>
+    </div>
+
+    <!-- Company Order Form -->
+    <div id="company-form" class="form-container hidden">
+        <div class="form-wrapper">
+            <div class="form-header">
+                <button class="back-btn" id="back-from-company" aria-label="Go back">
+                    <i class="fas fa-arrow-left"></i>
+                </button>
+                <h2><i class="fas fa-building"></i> Company / Brand Order</h2>
+                <p>Let's grow your business together</p>
+            </div>
+            
+            <form id="company-order-form" class="modern-form">
+                <div class="form-group">
+                    <label for="company-name">Company Name *</label>
+                    <input type="text" id="company-name" name="company_name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="company-email">Email Address *</label>
+                    <input type="email" id="company-email" name="email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="service-required">Service Required *</label>
+                    <select id="service-required" name="service_required" required>
+                        <option value="">Select a service</option>
+                        <option value="Social Media Ads">Social Media Ads</option>
+                        <option value="Content Creation">Content Creation</option>
+                        <option value="Brand Strategy">Brand Strategy</option>
+                        <option value="Complete Package">Complete Package</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="budget-range">Budget Range *</label>
+                    <select id="budget-range" name="budget_range" required>
+                        <option value="">Select budget range</option>
+                        <option value="₹10,000 - ₹25,000">₹10,000 - ₹25,000</option>
+                        <option value="₹25,000 - ₹50,000">₹25,000 - ₹50,000</option>
+                        <option value="₹50,000 - ₹1,00,000">₹50,000 - ₹1,00,000</option>
+                        <option value="₹1,00,000+">₹1,00,000+</option>
+                    </select>
+                </div>
+                
+                <button type="submit" class="submit-btn">
+                    <span class="btn-text">Submit Order</span>
+                    <span class="btn-loader hidden">
+                        <i class="fas fa-spinner fa-spin"></i>
+                    </span>
+                </button>
+            </form>
+        </div>
+        
+        <!-- Background Animation -->
+        <div class="bg-animation">
+            <div class="floating-orb orb-1"></div>
+            <div class="floating-orb orb-2"></div>
+        </div>
+    </div>
+
+    <!-- Creator Registration Form -->
+    <div id="creator-form" class="form-container hidden">
+        <div class="form-wrapper">
+            <div class="form-header">
+                <button class="back-btn" id="back-from-creator" aria-label="Go back">
+                    <i class="fas fa-arrow-left"></i>
+                </button>
+                <h2><i class="fas fa-star"></i> Creator / Influencer Registration</h2>
+                <p>Join our exclusive creator network</p>
+            </div>
+            
+            <form id="creator-register-form" class="modern-form">
+                <div class="form-group">
+                    <label for="creator-name">Full Name *</label>
+                    <input type="text" id="creator-name" name="name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="creator-email">Email Address *</label>
+                    <input type="email" id="creator-email" name="email" required>
+                </div>
+                
+                <div class="social-links-group">
+                    <label class="group-label">Social Media Links</label>
+                    
+                    <div class="form-group">
+                        <label for="instagram">
+                            <i class="fab fa-instagram"></i> Instagram
+                        </label>
+                        <input type="url" id="instagram" name="instagram" placeholder="https://instagram.com/yourusername">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="youtube">
+                            <i class="fab fa-youtube"></i> YouTube
+                        </label>
+                        <input type="url" id="youtube" name="youtube" placeholder="https://youtube.com/@yourusername">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="tiktok">
+                            <i class="fab fa-tiktok"></i> TikTok
+                        </label>
+                        <input type="url" id="tiktok" name="tiktok" placeholder="https://tiktok.com/@yourusername">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="twitter">
+                            <i class="fab fa-twitter"></i> Twitter/X
+                        </label>
+                        <input type="url" id="twitter" name="twitter" placeholder="https://twitter.com/yourusername">
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="niche">Content Niche *</label>
+                    <select id="niche" name="niche" required>
+                        <option value="">Select your niche</option>
+                        <option value="Technology">Technology</option>
+                        <option value="Fashion">Fashion</option>
+                        <option value="Fitness">Fitness</option>
+                        <option value="Food">Food</option>
+                        <option value="Travel">Travel</option>
+                        <option value="Lifestyle">Lifestyle</option>
+                        <option value="Business">Business</option>
+                        <option value="Education">Education</option>
+                        <option value="Entertainment">Entertainment</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="audience-size">Total Audience Size *</label>
+                    <select id="audience-size" name="audience_size" required>
+                        <option value="">Select audience size</option>
+                        <option value="1K - 10K">1K - 10K followers</option>
+                        <option value="10K - 50K">10K - 50K followers</option>
+                        <option value="50K - 100K">50K - 100K followers</option>
+                        <option value="100K - 500K">100K - 500K followers</option>
+                        <option value="500K - 1M">500K - 1M followers</option>
+                        <option value="1M+">1M+ followers</option>
+                    </select>
+                </div>
+                
+                <button type="submit" class="submit-btn">
+                    <span class="btn-text">Join Network</span>
+                    <span class="btn-loader hidden">
+                        <i class="fas fa-spinner fa-spin"></i>
+                    </span>
+                </button>
+            </form>
+        </div>
+        
+        <!-- Background Animation -->
+        <div class="bg-animation">
+            <div class="floating-orb orb-1"></div>
+            <div class="floating-orb orb-2"></div>
+        </div>
+    </div>
+
+    <!-- Success Modal -->
+    <div id="success-modal" class="modal hidden">
+        <div class="modal-content">
+            <div class="success-icon">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <h3 id="success-title">Success!</h3>
+            <p id="success-message">Your submission has been received.</p>
+            <button id="success-ok" class="modal-btn">OK</button>
+        </div>
+    </div>
+
+    <!-- Error Modal -->
+    <div id="error-modal" class="modal hidden">
+        <div class="modal-content error">
+            <div class="error-icon">
+                <i class="fas fa-exclamation-triangle"></i>
+            </div>
+            <h3>Error</h3>
+            <p id="error-message">Something went wrong. Please try again.</p>
+            <button id="error-ok" class="modal-btn">OK</button>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>

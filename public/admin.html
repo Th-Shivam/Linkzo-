@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Linkzo Admin Panel</title>
+    <meta name="robots" content="noindex, nofollow">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #1a1f36;
+            --secondary-color: #2d3561;
+            --accent-color: #00ff88;
+            --accent-hover: #00cc6a;
+            --text-primary: #ffffff;
+            --text-secondary: #b8c5d6;
+            --text-muted: #8892b0;
+            --background-dark: #0a0e1a;
+            --background-card: #1e2749;
+            --border-color: rgba(0, 255, 136, 0.2);
+            --shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--background-dark);
+            color: var(--text-primary);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .admin-header {
+            background: var(--primary-color);
+            padding: 1.5rem 2rem;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: var(--shadow);
+        }
+
+        .admin-logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #00ff88 0%, #00d4ff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .admin-title {
+            color: var(--text-secondary);
+            font-size: 1rem;
+        }
+
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .stat-card {
+            background: var(--background-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 255, 136, 0.1);
+        }
+
+        .stat-icon {
+            font-size: 3rem;
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: var(--text-secondary);
+            font-size: 1rem;
+        }
+
+        .admin-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .section {
+            margin-bottom: 3rem;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .section-title i {
+            color: var(--accent-color);
+        }
+
+        .refresh-btn {
+            background: var(--accent-color);
+            border: none;
+            border-radius: 8px;
+            padding: 0.5rem 1rem;
+            color: var(--primary-color);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .refresh-btn:hover {
+            background: var(--accent-hover);
+            transform: translateY(-2px);
+        }
+
+        .table-container {
+            background: var(--background-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .table th,
+        .table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .table th {
+            background: var(--primary-color);
+            color: var(--text-primary);
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .table td {
+            color: var(--text-secondary);
+        }
+
+        .table tr:hover {
+            background: rgba(0, 255, 136, 0.05);
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .badge-service {
+            background: rgba(0, 255, 136, 0.2);
+            color: var(--accent-color);
+        }
+
+        .badge-budget {
+            background: rgba(0, 212, 255, 0.2);
+            color: #00d4ff;
+        }
+
+        .badge-niche {
+            background: rgba(255, 107, 107, 0.2);
+            color: #ff6b6b;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .social-link {
+            color: var(--accent-color);
+            text-decoration: none;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            color: var(--accent-hover);
+            transform: scale(1.2);
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 3rem;
+            color: var(--text-muted);
+        }
+
+        .empty-state i {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            opacity: 0.5;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 2rem;
+            color: var(--text-secondary);
+        }
+
+        .loading i {
+            font-size: 2rem;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .error-message {
+            background: rgba(255, 71, 87, 0.1);
+            border: 1px solid #ff4757;
+            border-radius: 8px;
+            padding: 1rem;
+            color: #ff4757;
+            text-align: center;
+            margin: 1rem 0;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .admin-header {
+                padding: 1rem;
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .stats-container {
+                grid-template-columns: 1fr;
+                padding: 1rem;
+            }
+
+            .admin-container {
+                padding: 1rem;
+            }
+
+            .section-header {
+                flex-direction: column;
+                gap: 1rem;
+                align-items: flex-start;
+            }
+
+            .table-container {
+                overflow-x: auto;
+            }
+
+            .table {
+                min-width: 600px;
+            }
+
+            .table th,
+            .table td {
+                padding: 0.75rem 0.5rem;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="admin-header">
+        <div>
+            <h1 class="admin-logo">Linkzo</h1>
+            <p class="admin-title">Admin Panel</p>
+        </div>
+        <div>
+            <button class="refresh-btn" onclick="loadAllData()">
+                <i class="fas fa-sync-alt"></i>
+                Refresh All
+            </button>
+        </div>
+    </header>
+
+    <!-- Stats Dashboard -->
+    <div class="stats-container">
+        <div class="stat-card">
+            <div class="stat-icon">
+                <i class="fas fa-building"></i>
+            </div>
+            <div class="stat-number" id="total-companies">-</div>
+            <div class="stat-label">Total Companies</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-icon">
+                <i class="fas fa-star"></i>
+            </div>
+            <div class="stat-number" id="total-creators">-</div>
+            <div class="stat-label">Total Creators</div>
+        </div>
+    </div>
+
+    <div class="admin-container">
+        <!-- Company Orders Section -->
+        <section class="section">
+            <div class="section-header">
+                <h2 class="section-title">
+                    <i class="fas fa-building"></i>
+                    Company Orders
+                </h2>
+                <button class="refresh-btn" onclick="loadCompanies()">
+                    <i class="fas fa-sync-alt"></i>
+                    Refresh
+                </button>
+            </div>
+            <div class="table-container">
+                <div id="companies-loading" class="loading">
+                    <i class="fas fa-spinner"></i>
+                    <p>Loading company orders...</p>
+                </div>
+                <div id="companies-error" class="error-message" style="display: none;"></div>
+                <table class="table" id="companies-table" style="display: none;">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Company Name</th>
+                            <th>Email</th>
+                            <th>Service</th>
+                            <th>Budget</th>
+                            <th>Date</th>
+                        </tr>
+                    </thead>
+                    <tbody id="companies-tbody">
+                    </tbody>
+                </table>
+                <div id="companies-empty" class="empty-state" style="display: none;">
+                    <i class="fas fa-inbox"></i>
+                    <p>No company orders yet</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Creator Registrations Section -->
+        <section class="section">
+            <div class="section-header">
+                <h2 class="section-title">
+                    <i class="fas fa-star"></i>
+                    Creator Registrations
+                </h2>
+                <button class="refresh-btn" onclick="loadCreators()">
+                    <i class="fas fa-sync-alt"></i>
+                    Refresh
+                </button>
+            </div>
+            <div class="table-container">
+                <div id="creators-loading" class="loading">
+                    <i class="fas fa-spinner"></i>
+                    <p>Loading creator registrations...</p>
+                </div>
+                <div id="creators-error" class="error-message" style="display: none;"></div>
+                <table class="table" id="creators-table" style="display: none;">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Social Links</th>
+                            <th>Niche</th>
+                            <th>Audience</th>
+                            <th>Date</th>
+                        </tr>
+                    </thead>
+                    <tbody id="creators-tbody">
+                    </tbody>
+                </table>
+                <div id="creators-empty" class="empty-state" style="display: none;">
+                    <i class="fas fa-inbox"></i>
+                    <p>No creator registrations yet</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // Load data when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            loadAllData();
+        });
+
+        async function loadAllData() {
+            await Promise.all([
+                loadStats(),
+                loadCompanies(),
+                loadCreators()
+            ]);
+        }
+
+        async function loadStats() {
+            try {
+                const response = await fetch('/api/admin/stats');
+                const result = await response.json();
+                
+                if (result.success) {
+                    document.getElementById('total-companies').textContent = result.data.totalCompanies;
+                    document.getElementById('total-creators').textContent = result.data.totalCreators;
+                } else {
+                    console.error('Failed to load stats:', result.message);
+                }
+            } catch (error) {
+                console.error('Error loading stats:', error);
+            }
+        }
+
+        async function loadCompanies() {
+            const loading = document.getElementById('companies-loading');
+            const error = document.getElementById('companies-error');
+            const table = document.getElementById('companies-table');
+            const empty = document.getElementById('companies-empty');
+            const tbody = document.getElementById('companies-tbody');
+
+            // Show loading state
+            loading.style.display = 'block';
+            error.style.display = 'none';
+            table.style.display = 'none';
+            empty.style.display = 'none';
+
+            try {
+                const response = await fetch('/api/admin/companies');
+                const result = await response.json();
+
+                loading.style.display = 'none';
+
+                if (result.success) {
+                    if (result.data.length === 0) {
+                        empty.style.display = 'block';
+                    } else {
+                        tbody.innerHTML = result.data.map(company => `
+                            <tr>
+                                <td>#${company.id}</td>
+                                <td><strong>${escapeHtml(company.company_name)}</strong></td>
+                                <td>${escapeHtml(company.email)}</td>
+                                <td><span class="badge badge-service">${escapeHtml(company.service_required)}</span></td>
+                                <td><span class="badge badge-budget">${escapeHtml(company.budget_range)}</span></td>
+                                <td>${formatDate(company.created_at)}</td>
+                            </tr>
+                        `).join('');
+                        table.style.display = 'table';
+                    }
+                } else {
+                    error.textContent = result.message || 'Failed to load company orders';
+                    error.style.display = 'block';
+                }
+            } catch (err) {
+                loading.style.display = 'none';
+                error.textContent = 'Network error. Please try again.';
+                error.style.display = 'block';
+                console.error('Error loading companies:', err);
+            }
+        }
+
+        async function loadCreators() {
+            const loading = document.getElementById('creators-loading');
+            const error = document.getElementById('creators-error');
+            const table = document.getElementById('creators-table');
+            const empty = document.getElementById('creators-empty');
+            const tbody = document.getElementById('creators-tbody');
+
+            // Show loading state
+            loading.style.display = 'block';
+            error.style.display = 'none';
+            table.style.display = 'none';
+            empty.style.display = 'none';
+
+            try {
+                const response = await fetch('/api/admin/creators');
+                const result = await response.json();
+
+                loading.style.display = 'none';
+
+                if (result.success) {
+                    if (result.data.length === 0) {
+                        empty.style.display = 'block';
+                    } else {
+                        tbody.innerHTML = result.data.map(creator => `
+                            <tr>
+                                <td>#${creator.id}</td>
+                                <td><strong>${escapeHtml(creator.name)}</strong></td>
+                                <td>${escapeHtml(creator.email)}</td>
+                                <td>${generateSocialLinks(creator)}</td>
+                                <td><span class="badge badge-niche">${escapeHtml(creator.niche)}</span></td>
+                                <td>${escapeHtml(creator.audience_size)}</td>
+                                <td>${formatDate(creator.created_at)}</td>
+                            </tr>
+                        `).join('');
+                        table.style.display = 'table';
+                    }
+                } else {
+                    error.textContent = result.message || 'Failed to load creator registrations';
+                    error.style.display = 'block';
+                }
+            } catch (err) {
+                loading.style.display = 'none';
+                error.textContent = 'Network error. Please try again.';
+                error.style.display = 'block';
+                console.error('Error loading creators:', err);
+            }
+        }
+
+        function generateSocialLinks(creator) {
+            const links = [];
+            
+            if (creator.instagram) {
+                links.push(`<a href="${escapeHtml(creator.instagram)}" target="_blank" class="social-link" title="Instagram"><i class="fab fa-instagram"></i></a>`);
+            }
+            if (creator.youtube) {
+                links.push(`<a href="${escapeHtml(creator.youtube)}" target="_blank" class="social-link" title="YouTube"><i class="fab fa-youtube"></i></a>`);
+            }
+            if (creator.tiktok) {
+                links.push(`<a href="${escapeHtml(creator.tiktok)}" target="_blank" class="social-link" title="TikTok"><i class="fab fa-tiktok"></i></a>`);
+            }
+            if (creator.twitter) {
+                links.push(`<a href="${escapeHtml(creator.twitter)}" target="_blank" class="social-link" title="Twitter"><i class="fab fa-twitter"></i></a>`);
+            }
+            
+            return links.length > 0 ? `<div class="social-links">${links.join('')}</div>` : '<span style="color: var(--text-muted);">No links</span>';
+        }
+
+        function formatDate(dateString) {
+            const date = new Date(dateString);
+            return date.toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'short',
+                day: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit'
+            });
+        }
+
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        // Auto-refresh every 30 seconds
+        setInterval(loadStats, 30000);
+    </script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+{
+  "name": "linkzo-website",
+  "version": "1.0.0",
+  "description": "Modern Social Media Marketing Agency Website with Database Integration",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "keywords": ["social-media", "marketing", "agency", "linkzo"],
+  "author": "Linkzo Team",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2",
+    "sqlite3": "^5.1.6",
+    "body-parser": "^1.20.2",
+    "cors": "^2.8.5",
+    "path": "^0.12.7"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}
