@@ -34,6 +34,380 @@
     --shadow-heavy: 0 10px 40px rgba(0, 0, 0, 0.3);
 }
 
+/* Landing Screen Styles */
+.landing-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(135deg, #0a0e1a 0%, #1a1f36 50%, #2d3561 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    overflow: hidden;
+    animation: fadeIn 1s ease-out;
+    /* Enhanced futuristic background */
+    background-image: 
+        radial-gradient(circle at 20% 80%, rgba(0, 255, 136, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(0, 255, 136, 0.08) 0%, transparent 50%),
+        radial-gradient(circle at 40% 40%, rgba(45, 53, 97, 0.3) 0%, transparent 50%);
+}
+
+.landing-container {
+    text-align: center;
+    max-width: 1000px;
+    padding: 2rem;
+    position: relative;
+    z-index: 2;
+}
+
+.landing-header {
+    margin-bottom: 4rem;
+    animation: slideDown 1s ease-out 0.3s both;
+}
+
+.landing-logo {
+    font-size: 4rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, #00ff88 0%, #00cc6a 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 1rem;
+    text-shadow: 0 0 30px rgba(0, 255, 136, 0.3);
+}
+
+.landing-subtitle {
+    font-size: 1.5rem;
+    color: var(--text-secondary);
+    font-weight: 300;
+    letter-spacing: 0.5px;
+}
+
+.choice-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 3rem;
+    margin: 4rem 0;
+    animation: slideUp 1s ease-out 0.6s both;
+}
+
+.choice-btn {
+    background: rgba(30, 39, 73, 0.8);
+    border: 2px solid rgba(0, 255, 136, 0.2);
+    border-radius: 20px;
+    padding: 3rem 2rem;
+    color: var(--text-primary);
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+    text-align: center;
+    min-height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.choice-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(0, 255, 136, 0.1), transparent);
+    transition: left 0.6s;
+}
+
+.choice-btn:hover::before {
+    left: 100%;
+}
+
+.choice-btn:hover {
+    transform: translateY(-10px) scale(1.02);
+    border-color: var(--accent-color);
+    box-shadow: 0 20px 40px rgba(0, 255, 136, 0.2);
+    background: rgba(30, 39, 73, 0.9);
+}
+
+.choice-icon {
+    font-size: 3rem;
+    margin-bottom: 1.5rem;
+    color: var(--accent-color);
+    transition: all 0.3s ease;
+}
+
+.choice-btn:hover .choice-icon {
+    transform: scale(1.2);
+    text-shadow: 0 0 20px rgba(0, 255, 136, 0.5);
+}
+
+.choice-btn h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: var(--text-primary);
+}
+
+.choice-btn p {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+    font-weight: 400;
+}
+
+.choice-features {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+.choice-features span {
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+}
+
+.choice-btn:hover .choice-features span {
+    opacity: 1;
+    color: var(--accent-color);
+}
+
+.landing-footer {
+    margin-top: 3rem;
+    animation: fadeIn 1s ease-out 0.9s both;
+}
+
+.landing-footer p {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    font-weight: 300;
+}
+
+/* Background Animation */
+.bg-animation {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.floating-orb {
+    position: absolute;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(0, 255, 136, 0.15) 0%, rgba(0, 255, 136, 0.05) 40%, transparent 70%);
+    animation: float 8s ease-in-out infinite;
+    filter: blur(1px);
+}
+
+.orb-1 {
+    width: 300px;
+    height: 300px;
+    top: 10%;
+    left: 5%;
+    animation-delay: 0s;
+    background: radial-gradient(circle, rgba(0, 255, 136, 0.12) 0%, rgba(0, 255, 136, 0.04) 40%, transparent 70%);
+}
+
+.orb-2 {
+    width: 200px;
+    height: 200px;
+    top: 50%;
+    right: 10%;
+    animation-delay: 2.5s;
+    background: radial-gradient(circle, rgba(45, 53, 97, 0.2) 0%, rgba(45, 53, 97, 0.08) 40%, transparent 70%);
+}
+
+.orb-3 {
+    width: 150px;
+    height: 150px;
+    bottom: 15%;
+    left: 50%;
+    animation-delay: 5s;
+    background: radial-gradient(circle, rgba(0, 255, 136, 0.1) 0%, rgba(0, 255, 136, 0.03) 40%, transparent 70%);
+}
+
+/* Main Content Hidden Initially */
+.main-content.hidden {
+    display: none;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px) translateX(0px) rotate(0deg) scale(1);
+    }
+    25% {
+        transform: translateY(-30px) translateX(20px) rotate(90deg) scale(1.1);
+    }
+    50% {
+        transform: translateY(-10px) translateX(-15px) rotate(180deg) scale(0.9);
+    }
+    75% {
+        transform: translateY(20px) translateX(10px) rotate(270deg) scale(1.05);
+    }
+}
+
+/* Landing Screen Transitions */
+.landing-screen.fade-out {
+    animation: fadeOut 0.8s ease-in-out forwards;
+}
+
+@keyframes fadeOut {
+    to {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+}
+
+/* Mobile Responsiveness for Landing Screen */
+@media (max-width: 768px) {
+    .landing-logo {
+        font-size: 2.5rem;
+    }
+    
+    .landing-subtitle {
+        font-size: 1.2rem;
+    }
+    
+    .choice-container {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        margin: 3rem 0;
+    }
+    
+    .choice-btn {
+        padding: 2.5rem 1.5rem;
+        min-height: 280px;
+    }
+    
+    .choice-btn h2 {
+        font-size: 1.8rem;
+    }
+    
+    .choice-icon {
+        font-size: 2.5rem;
+    }
+    
+    .landing-container {
+        padding: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .landing-logo {
+        font-size: 2rem;
+    }
+    
+    .landing-subtitle {
+        font-size: 1rem;
+    }
+    
+    .choice-btn {
+        padding: 2rem 1rem;
+        min-height: 250px;
+    }
+    
+    .choice-btn h2 {
+        font-size: 1.5rem;
+    }
+    
+    .choice-btn p {
+        font-size: 1rem;
+    }
+    
+    .choice-features {
+        font-size: 0.85rem;
+    }
+}
+    
+    .choice-container {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        margin: 2rem 0;
+    }
+    
+    .choice-btn {
+        padding: 2rem 1.5rem;
+        min-height: 250px;
+    }
+    
+    .choice-btn h2 {
+        font-size: 1.5rem;
+    }
+    
+    .choice-icon {
+        font-size: 2.5rem;
+    }
+    
+    .landing-container {
+        padding: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .landing-logo {
+        font-size: 2rem;
+    }
+    
+    .landing-subtitle {
+        font-size: 1rem;
+    }
+    
+    .choice-btn {
+        padding: 1.5rem 1rem;
+        min-height: 200px;
+    }
+    
+    .choice-btn h2 {
+        font-size: 1.3rem;
+    }
+    
+    .choice-icon {
+        font-size: 2rem;
+    }
+}
+
 body {
     font-family: 'Inter', sans-serif;
     line-height: 1.6;
